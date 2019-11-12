@@ -8,6 +8,9 @@ Welcome to Candy Crush's documentation!
 
 In this tutorial we'll use Pygame Zero to create a Candy Crush clone.
 
+.. image:: images/screenshot.png
+           :width: 400
+
 If you've not yes set up Pygame Zero and the editor Mu, head over to the Flappy Bird Tutorial and follow the instructions there: https://tinyurl.com/y37qxb5h
 
 Installing Assets
