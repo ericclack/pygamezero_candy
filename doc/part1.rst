@@ -104,4 +104,62 @@ Then add this code to draw the cursor right at the end of your :code:`draw` func
               screen.blit(str(tile), (x * 40, y * 40))
       cursor.draw()
 
-      
+If you look carefully you'll see that the cursor is not properly on the screen. Let's fix that using a nice feature on the actor object. Change your :code:`cursor` definition to this:
+
+.. code:: python
+
+   cursor = Actor('selected', topleft=(0,0))
+
+Using :code:`topleft` we can position the cursor so that it's exactly in the top corner of the screen.
+
+Moving the cursor
+-----------------
+
+Let's move the cursor when the player presses the arrow keys.
+
+Add the following new function at the end of your program:
+
+.. code:: python
+
+    def on_key_up(key):
+        if key == keys.LEFT:
+            cursor.x -= 40
+        if key == keys.RIGHT:
+            cursor.x += 40
+        if key == keys.UP:
+            cursor.y -= 40
+        if key == keys.DOWN:
+            cursor.y += 40
+
+Now you can move the cursor, but did you notice a quite weird bug when you press play?
+
+The background changes each time we move! Why is that? Have a look at the draw code and have a think...
+
+Fixing the background
+---------------------
+
+Did you figure it out? That's right, we just set each tile to a random number when we draw the board, and it's never going to be the same each time, so the board keeps changing. Let's fix that...
+
+We need to remember what each tile is, and then use this record to draw the same board each time. Let's use a two dimensional array to do this. Add this just above your :code:`draw` function:
+
+.. code:: python
+
+    board = []
+    for row in range(14):
+        # Make a list of 10 random tiles
+        tiles = [random.randint(1,8) for _ in range(10)]
+        board.append(tiles)
+
+Now change your :code:`draw` function so that it uses this array:
+
+.. code:: python
+
+    def draw():
+        for y in range(14):
+            for x in range(10):
+                tile = board[y][x]
+                screen.blit(str(tile), (x * 40, y * 40))
+        cursor.draw()
+
+So, to recap: we create a new two dimensional array called :code:`board`, and we add lists of tiles, one for each row. We then use this when drawing the board, looking up the correct tile given :code:`x` and :code:`y`.
+
