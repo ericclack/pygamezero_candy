@@ -19,7 +19,7 @@ Download the tutorial assets by |location_link|. You can close that page once th
 
 .. |location_link| raw:: html
 
-   <a href="https://kinolien.github.io/gitzip/?download=https://github.com/..." target="_blank">clicking this link</a>
+   <a href="https://kinolien.github.io/gitzip/?download=https://github.com/ericclack/pygamezero_candy/tree/master/images" target="_blank">clicking this link</a>
 
 Start the Tutorial
 ------------------
