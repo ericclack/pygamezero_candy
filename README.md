@@ -1,6 +1,6 @@
 # Pygame Zero Candy clone
 
-Read the [docs](.md)
+Read the [docs](/doc/index.rst)
 
 # Credits
 
