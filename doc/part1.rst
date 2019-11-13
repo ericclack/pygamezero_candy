@@ -28,7 +28,7 @@ Let's add some tiles
 .. code:: python
 
    def draw():
-       screen.blit('tile1.png', (0, 0))
+       screen.blit('1.png', (0, 0))
        
 - Press **Play**
 
@@ -37,10 +37,10 @@ OK, one tile. We need more, in fact we need to fill the screen. Change your :cod
 .. code:: python
 
    def draw():
-       screen.blit('tile1.png', (0, 0))
-       screen.blit('tile2.png', (40, 0))
-       screen.blit('tile3.png', (80, 0))
-       screen.blit('tile4.png', (120, 0))
+       screen.blit('1.png', (0, 0))
+       screen.blit('2.png', (40, 0))
+       screen.blit('3.png', (80, 0))
+       screen.blit('4.png', (120, 0))
 
 - Press **Play**       
 
