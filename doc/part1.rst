@@ -81,7 +81,7 @@ This is Python's way of telling us that we need to import the :code:`random` lib
 
 Cool! We have a row of tiles. Run the program again and you'll see a different set of tiles -- that's what :code:`random.randint` does for us, it picks a random number between 1 and 8 each time. 
 
-So how do we create multiple rows? Well let's put our loop inside a loop... you only need to add one line (the :code:`for y...`) and then indent the following three lines:
+So how do we create multiple rows? Well let's put our loop inside a loop. Here's how: add a new line at the top of the function (the :code:`for y...`) and then indent the following three lines, then use the :code:`y` to compute each tile's y position (in the last line of the function). 
 
 .. code:: python
 
@@ -125,9 +125,7 @@ Using :code:`topleft` we can position the cursor so that it's exactly in the top
 Moving the cursor
 -----------------
 
-Let's move the cursor when the player presses the arrow keys.
-
-Add the following new function at the end of your program:
+Let's move the cursor when the player presses the arrow keys. Pygame Zero will check for a function called :code:`on_key_up` in our program and call it whenever the player presses a key. So let's add that now, at the end of your code type in the following:
 
 .. code:: python
 
