@@ -52,8 +52,18 @@ Change your :code:`draw` function to the following:
 
   def draw():
       for x in range(10):
-          tile = random.randint(1,8)
+          tile = 1
           screen.blit(str(tile), (x * 40, 0))
+
+- Press **Play**
+
+OK, now we have 10 tiles across the screen. That's what the :code:`for x in range(10)` does, it repeats the code inside 10 times, setting :code:`x` to each number between 0 and 9 (most programming languages start counting at 0)! We then use the :code:`x` to calculate the tile's x position on the screen, as :code:`x * 40` since each tile is 40 pixels wide.
+
+Let's mix up the tiles a bit, change the line :code:`tile = 1` to the following:
+
+.. code:: python
+          
+   tile = random.randint(1,8)
 
 - Press **Play**
 
@@ -131,7 +141,7 @@ Add the following new function at the end of your program:
         if key == keys.DOWN:
             cursor.y += 40
 
-Now you can move the cursor, but did you notice a quite weird bug when you press play?
+Now you can move the cursor, but did you notice a weird bug when you press play?
 
 The background changes each time we move! Why is that? Have a look at the draw code and have a think...
 
@@ -140,17 +150,17 @@ Fixing the background
 
 Did you figure it out? That's right, we just set each tile to a random number when we draw the board, and it's never going to be the same each time, so the board keeps changing. Let's fix that...
 
-We need to remember what each tile is, and then use this record to draw the same board each time. Let's use a two dimensional array to do this. Add this just above your :code:`draw` function:
+We need to remember what each tile is, and then use this record to draw the same board each time. Let's use a two dimensional list to do this. Add this just above your :code:`draw` function:
 
 .. code:: python
 
     board = []
     for row in range(14):
         # Make a list of 10 random tiles
-        tiles = [random.randint(1,8) for _ in range(10)]
+        tiles = [random.randint(1,8) for x in range(10)]
         board.append(tiles)
 
-Now change your :code:`draw` function so that it uses this array:
+Now change your :code:`draw` function so that it uses this list:
 
 .. code:: python
 
@@ -161,5 +171,63 @@ Now change your :code:`draw` function so that it uses this array:
                 screen.blit(str(tile), (x * 40, y * 40))
         cursor.draw()
 
-So, to recap: we create a new two dimensional array called :code:`board`, and we add lists of tiles, one for each row. We then use this when drawing the board, looking up the correct tile given :code:`x` and :code:`y`.
+So, to recap: we create a new two dimensional list called :code:`board`, and we add lists of tiles, one for each row. We then use this when drawing the board, looking up the correct tile given :code:`x` and :code:`y`.
 
+There's a lot of code there! Take a look carefully and see if you spot some things you've not used before... there's two big new things here: *lists* and *list comprehensions*. Let's take a little diversion to explore them...
+
+First let's open a new Python tab and switch to a REPL (pronounced repple) , this is a place we can type in Python code and see the results immediately - useful for checking out language features. So:
+
+* Click **New**
+* Click **Mode** and choose Python 3
+* Click **REPL**, you should now see a window at the bottom of the screen with a prompt :code:`In [0]`
+
+
+Lists
+------
+
+Lists are a nice data type that lets of store a sequence of values (in our game a sequence of tiles) and retrieve them later.
+
+To try them out type each line of code here, one at a time, in your REPL. You don't need to type the comments (starting with a hash :code:`#`) if you don't want to.
+
+.. code:: python
+
+   # Create an list of numbers 6-1
+   a = [6,5,4,3,2,1]
+   # Print the list
+   a
+   # Print first then last item of the list
+   a[0]
+   a[5]
+  
+So as you can see, you can easily make an list, then print it out to the REPL. We can also add to the list:
+
+.. code:: python
+
+   a.append(0)
+   a.append(-1)
+   # Print it out
+   a
+
+You can store anything in an list, including other lists...
+
+.. code:: python
+
+   # Start with an empty list
+   b = []
+   # Add list `a` from before
+   b.append(a)
+   # A new list of strings
+   c = ['the', 'quick', 'brown', 'fox']
+   
+   b.append(c)
+   b.append(sorted(c))
+
+   # Print out b
+   b
+   
+   
+
+List Comprehensions
+-------------------
+
+To be completed...
