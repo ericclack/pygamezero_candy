@@ -139,7 +139,7 @@ Let's move the cursor when the player presses the arrow keys. Pygame Zero will c
         if key == keys.DOWN:
             cursor.y += 40
 
-Now you can move the cursor, but did you notice a weird bug when you press play?
+Now you can move the cursor, but did you notice a weird bug when you press the arrow keys?
 
 The background changes each time we move! Why is that? Have a look at the draw code and have a think...
 
@@ -189,7 +189,7 @@ To try them out type each line of code here, one at a time, in your REPL. You do
 
 .. code:: python
 
-   # Create an list of numbers 6-1
+   # Create a list of numbers 6-1
    a = [6,5,4,3,2,1]
    # Print the list
    a
@@ -197,7 +197,7 @@ To try them out type each line of code here, one at a time, in your REPL. You do
    a[0]
    a[5]
   
-So as you can see, you can easily make an list, then print it out to the REPL. We can also add to the list:
+So as you can see, you can easily make a list, then print it out to the REPL. We can also add to the list:
 
 .. code:: python
 
@@ -206,7 +206,7 @@ So as you can see, you can easily make an list, then print it out to the REPL. W
    # Print it out
    a
 
-You can store anything in an list, including other lists...
+You can store anything in a list, including other lists...
 
 .. code:: python
 
