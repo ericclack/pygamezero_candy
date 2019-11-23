@@ -236,7 +236,7 @@ Here's an example:
 
    [i for i in range(10)]
    
-Literally this means: make a list of all :code:`i`s, where :code:`i` is each number in the range of zero to nine. 
+Literally this means: make a list of all :code:`i`, where :code:`i` is each number in the range of zero to nine. 
 
 What do you think these do?
 
