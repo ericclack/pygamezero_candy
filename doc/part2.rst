@@ -44,3 +44,6 @@ Almost every piece of code that every developer writes (yes even professional on
 * Spend a bit of time playing and testing the game and see if you can find some bugs. 
 
 Hint: there's a pretty big one that generates the error :code:`IndexError: list index out of range`
+
+To be continued...
+------------------
