@@ -1,6 +1,6 @@
 # Pygame Zero Candy clone
 
-Read the [docs](/doc/index.rst)
+Read the docs at https://pygamezero-candy.readthedocs.io/
 
 # Credits
 
