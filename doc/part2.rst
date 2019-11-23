@@ -32,4 +32,15 @@ Did you notice something wrong with that code? Press run to see. That's right, w
   def cursor_tile_pos():
     return (int(cursor.x // 40)-1, int(cursor.y // 40))
 
-Here we are tranlating the pixel position of the cursor into a tile co-ordinate. 
+Here we are tranlating the pixel position of the cursor into a tile co-ordinate.
+
+Time for testing
+----------------
+
+Testing is very important when developing software.
+
+Almost every piece of code that every developer writes (yes even professional ones!) has bugs and we need to find them. Otherwise our players will find them and get frustrated -- after all they can't fix the bugs unless they are programmers too.
+
+* Spend a bit of time playing and testing the game and see if you can find some bugs. 
+
+Hint: there's a pretty big one that generates the error :code:`IndexError: list index out of range`
