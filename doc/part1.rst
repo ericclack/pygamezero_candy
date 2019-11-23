@@ -236,12 +236,21 @@ Here's an example:
 
    [i for i in range(10)]
    
-Literally this means: make a list of :code:`i`, where :code:`i` is each number in the range of zero to nine. 
-What do you think this does?
+Literally this means: make a list of all :code:`i`s, where :code:`i` is each number in the range of zero to nine. 
+
+What do you think these do?
 
 .. code:: python
 
    [i*2 for i in range(1, 11)]
    [i*i for i in range(1, 11)]
    
-So in our Candy Crush game we use :code:`[random.randint(1,8) for x in range(10)]` -- which means create a random number for each :code:`x` in the range of 1 to 8, but we don't actually use the :code:`x`, which is OK with Python, we just use it to ensure we get 10 items. 
+Why not try and make up some yourself? 
+
+So in our Candy Crush game we use the list comprehension :code:`[random.randint(1,8) for x in range(10)]` -- which means build a list of random numbers in the range of 1 to 8, from the list of :code:`x` in the range of zero to nine, so 10 items. We don't actually use the :code:`x` values, but that's OK. 
+
+
+Next up...
+----------
+
+Let's get that space bar working to swap the tiles in `Part 2 <part2.rst>`_.
