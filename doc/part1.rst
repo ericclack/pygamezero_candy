@@ -18,7 +18,7 @@ Getting Started
 
 - press **Play** to see what this code does.
 
-You should see an new empty window appear.
+You should see a new, empty window appear.
 
 
 Let's add some tiles
@@ -228,4 +228,20 @@ You can store anything in a list, including other lists...
 List Comprehensions
 -------------------
 
-To be completed...
+A list comprehension enables us to make a new list from an existing list by doing something to each element. It looks a bit complicated, but saves us a lot of typing. 
+
+Here's an example:
+
+.. code:: python
+
+   [i for i in range(10)]
+   
+Literally this means: make a list of :code:`i`, where :code:`i` is each number in the range of zero to nine. 
+What do you think this does?
+
+.. code:: python
+
+   [i*2 for i in range(1, 11)]
+   [i*i for i in range(1, 11)]
+   
+So in our Candy Crush game we use :code:`[random.randint(1,8) for x in range(10)]` -- which means create a random number for each :code:`x` in the range of 1 to 8, but we don't actually use the :code:`x`, which is OK with Python, we just use it to ensure we get 10 items. 
