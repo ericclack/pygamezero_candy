@@ -31,3 +31,4 @@ Click on the Part 1 link below to get started.
    :caption: Contents:
 
    part1
+   part2
