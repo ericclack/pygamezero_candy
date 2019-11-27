@@ -15,7 +15,7 @@ If you've not yes set up Pygame Zero and the editor Mu, head over to the Flappy 
 
 Installing Assets
 -----------------
-Download the tutorial assets by |location_link|. You can close that page once the download finishes.   Click on the **Images** button in the Mu editor.  This will open the directory where Pygame Zero looks for images.  Copy the images from the **images.zip** file you just downloaded into this directory.
+Download the tutorial assets by |location_link|. You can close that page once the download finishes. Click on the **Images** button in the Mu editor.  This will open the directory where Pygame Zero looks for images.  Copy the images from the **images.zip** file you just downloaded into this directory.
 
 .. |location_link| raw:: html
 
@@ -32,3 +32,4 @@ Click on the Part 1 link below to get started.
 
    part1
    part2
+   part3

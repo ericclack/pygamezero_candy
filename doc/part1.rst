@@ -23,7 +23,10 @@ You should see a new, empty window appear.
 
 Let's add some tiles
 --------------------
-- Add these lines to the end of your program. Make sure you *indent* the second line so that it's inside the `draw` function, in other words, press the TAB key before typing it. 
+
+- Let's create the :code:`draw` function, Pygame Zero will call this to draw our game graphics, so anything we want on screen needs to go in this function.
+
+Add these lines to the end of your program. Make sure you *indent* the second line so that it's inside the `draw` function, in other words, press the TAB key before typing :code:`screen.blit`. 
   
 .. code:: python
 
@@ -32,7 +35,11 @@ Let's add some tiles
        
 - Press **Play**
 
-OK, one tile. We need more, in fact we need to fill the screen. Change your :code:`draw` function to the following:
+OK, just one tile. :code:`screen.blit` displays the image :code:`1.png` on the screen at co-ordinates (0,0).
+
+*We need more than one tile of course, in fact we need to fill the entire screen.*
+
+Change your :code:`draw` function to the following:
 
 .. code:: python
 
@@ -95,15 +102,17 @@ So how do we create multiple rows? Well let's put our loop inside a loop. Here's
 Adding our cursor
 -----------------
 
-To play Candy Crush the player moves around a cursor, which highlights two tiles. The player can then swap the tiles by pressing space.
+To play Candy Crush the player moves around a cursor, which highlights two tiles at a time. The player can then swap the tiles by pressing space (we'll come to this in Part 2).
 
-Let's use an :code:`Actor` to represent the cursor. Add this code above your :code:`draw` function:
+We're going to use an :code:`Actor` to represent the cursor, actors are objects that represent things that move around the screen and interact with each other. Recall that in Flappy Bird the bird and pipes were actors. 
+
+We want our cursor actor to be available to all of our code, so we need to add the code for it outside all of our functions. To do this, add these lines under the line that sets the :code:`TITLE`:
 
 .. code:: python
 
    cursor = Actor('selected', (0,0))
 
-Then add this code to draw the cursor right at the end of your :code:`draw` function, it needs to line up exactly with the :code:`f` of the first :code:`for` loop:
+Remember that everything we want on our screen needs to be drawn in the :code:`draw` function? So add this code right at the end of your :code:`draw` function, it needs to line up exactly with the :code:`f` of the first :code:`for` loop so that it is not inside the loop:
 
 .. code:: python
 
@@ -125,7 +134,7 @@ Using :code:`topleft` we can position the cursor so that it's exactly in the top
 Moving the cursor
 -----------------
 
-Let's move the cursor when the player presses the arrow keys. Pygame Zero will check for a function called :code:`on_key_up` in our program and call it whenever the player presses a key. So let's add that now, at the end of your code type in the following:
+Now we need to move the cursor when the player presses the arrow keys. Pygame Zero will check for a function called :code:`on_key_up` in our program and call it whenever the player presses a key. So let's add that now, at the end of your code type in the following:
 
 .. code:: python
 
@@ -148,7 +157,7 @@ Fixing the background
 
 Did you figure it out? That's right, we just set each tile to a random number when we draw the board, and it's never going to be the same each time, so the board keeps changing. Let's fix that...
 
-We need to remember what each tile is, and then use this record to draw the same board each time. Let's use a two dimensional list to do this. Add this just above your :code:`draw` function:
+We need to remember what each tile is, and then use this record to draw the same board each time. Let's use a two dimensional list to do this (*a what? don't worry, we explain in the section below*). Add this just above your :code:`draw` function:
 
 .. code:: python
 
@@ -183,7 +192,7 @@ First let's open a new Python tab and switch to a REPL (pronounced repple) , thi
 Lists
 ------
 
-Lists are a nice data type that lets of store a sequence of values (in our game a sequence of tiles) and retrieve them later.
+Lists are a nice data type that lets us store a sequence of values (in our game a sequence of tiles) and retrieve them later.
 
 To try them out type each line of code here, one at a time, in your REPL. You don't need to type the comments (starting with a hash :code:`#`) if you don't want to.
 
@@ -253,4 +262,4 @@ So in our Candy Crush game we use the list comprehension :code:`[random.randint(
 Next up...
 ----------
 
-Let's get that space bar working to swap the tiles in `Part 2 <part2.rst>`_.
+Let's get that space bar working to swap the tiles in :ref:`part2`.
