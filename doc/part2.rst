@@ -62,7 +62,7 @@ Looking in the error message you should also be able to see the line number wher
 Debugging
 ---------
 
-Testing is only half the story. Once we have a list of errors we need to work out the cause of each error and figure out the best way of fixing them. So let's investigate each bug.
+Testing is only half the story. Once we have a list of errors we need to work out the cause of each error and figure out the best way of fixing each one. So let's do this...
 
 *You could just skip this section and look at the fixed code in the next part of this tutorial but that would be cheating!*
 
