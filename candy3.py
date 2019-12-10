@@ -1,8 +1,8 @@
 import random
 
 # The size of the board in tiles
-TILESW = 6
-TILESH = 6
+TILESW = 14
+TILESH = 14
 # The pixel size of the screen
 WIDTH = TILESW * 40
 HEIGHT = TILESH * 40
@@ -46,8 +46,9 @@ def check_tiles_for_matches():
                 board[y][x+1] = None
 
 def check_tiles_for_gaps():
+    # Work from the bottom up
     for y in range(TILESH-1,-1,-1):
-        for x in range(TILESW-1):
+        for x in range(TILESW):
             if board[y][x] is None:
                 drop_tiles(x,y)
 
