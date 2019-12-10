@@ -14,7 +14,7 @@ Getting Started
     HEIGHT = 560
     TITLE = 'Candy Crush'
 
-- Press **Save** and save the file as candy.py
+- Press **Save** and save the file as :code:`candy.py`
 
 - press **Play** to see what this code does.
 
