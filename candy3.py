@@ -1,14 +1,14 @@
 import random
 
-
 # The size of the board in tiles
-TILESW = 10
-TILESH = 4
+TILESW = 6
+TILESH = 6
 # The pixel size of the screen
 WIDTH = TILESW * 40
 HEIGHT = TILESH * 40
 
 TITLE = 'Candy Crush'
+last_dt = 0
 
 cursor = Actor('selected', topleft=(0,0))
 
@@ -19,14 +19,37 @@ for row in range(TILESH):
     board.append(tiles)
 
 def draw():
-     for y in range(TILESH):
+    screen.clear()
+    for y in range(TILESH):
         for x in range(TILESW):
             tile = board[y][x]
-            screen.blit(str(tile), (x * 40, y * 40))
-     cursor.draw()
+            if tile:
+                screen.blit(str(tile), (x * 40, y * 40))
+    cursor.draw()
 
 def cursor_tile_pos():
     return (int(cursor.x // 40)-1, int(cursor.y // 40))
+
+def drop_tiles(x,y):
+    # Loop backwards through the rows from x,y to the top
+    for row in range(y,0,-1):
+        # Copy the tile above down
+        board[row][x] = board[row-1][x]
+    # Finally blank the tile at the top
+    board[0][x] = None
+
+def check_tiles_for_matches():
+    for y in range(TILESH):
+        for x in range(TILESW-1):
+            if board[y][x] == board[y][x+1]:
+                board[y][x] = None
+                board[y][x+1] = None
+
+def check_tiles_for_gaps():
+    for y in range(TILESH-1,-1,-1):
+        for x in range(TILESW-1):
+            if board[y][x] is None:
+                drop_tiles(x,y)
 
 def on_key_up(key):
     x, y = cursor_tile_pos()
@@ -40,3 +63,9 @@ def on_key_up(key):
         cursor.y += 40
     if key == keys.SPACE:
         board[y][x], board[y][x+1] = board[y][x+1], board[y][x]
+
+def every_second():
+    check_tiles_for_matches()
+    check_tiles_for_gaps()
+
+clock.schedule_interval(every_second, 1.0)
