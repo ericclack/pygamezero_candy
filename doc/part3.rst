@@ -117,11 +117,97 @@ To see how this works better, go ahead and try different values for :code:`TILES
 Matching Tiles
 --------------
 
-...
+When two tiles match we want to remove them from the screen and then move the tiles above down, we can think of this as two new functions: :code:`check_matches` and :code:`drop_tiles`.
+
+There are a few decisions to make:
+
+1. when should we check for matches? 
+2. should we check the whole board or just where the cursor is?
+
+Let's check whenever the user presses SPACE as that could cause a match. As we did before, let's just put in the function call then write the code inside:
+
+Add the last line here *inside* the :code:`if` statement:
+
+.. code:: python
+
+   def on_key_up(key):
+       ...
+       if key == keys.SPACE:
+          board[y][x], board[y][x+1] = board[y][x+1], board[y][x]
+          check_matches()
+          
+Running the program should report an error whenever you press SPACE. Go ahead and confirm this - it means we have the function in the correct place. 
+
+Let's check all the tiles on the board for matches, this will be simpler and if it proves to be too slow we can optimise it later.
+
+.. code:: python
+
+   def check_tiles():
+       for y in range(TILESH): 
+           for x in range(TILESW-1):
+               if board[y][x] == board[y][x+1]:
+                   board[y][x] = None
+                   board[y][x+1] = None
+
+That code should look familiar, it's the same pattern as drawing the board. This time we are looping through every tile and checking to see if each is the same as it's neighbour. Did you see that we use a double equals sign to check that two things are the same :code:`==`, this is different to assignment with one equals sign.
+
+If we spot a duplicate we remove the two tiles and replace them with a blank, a :code:`None` in python.
+
+OK, now let's test and see what errors we get...
+
+First we see this one:
+
+.. code:: python
+
+   File "candy3.py", line 27, in draw
+   ...
+   KeyError: "No image found like 'None'. Are you sure the image exists?"
+
+*OK, so our drawing code assumes that there's a tile at every position and just draws it, let's fix that.*
+
+Go to line 27 in your draw function (your line number might be a bit different, do check your error message) and add an :code:`if` statement to check, like so:
+
+.. code:: python
+
+   ...
+   for x in range(TILESW):
+       tile = board[y][x]
+       if tile:
+           screen.blit(str(tile), (x * 40, y * 40))
+
+Run again and you'll notice no errors, but the tiles don't leave the screen. We need to add a :code:`screen.clear()` to the start of the draw function:
+
+.. code:: python
+
+   def draw():
+       screen.clear()
+       for y in range(TILESH):
+
+OK, that's better, but there is one more weird thing: on the first press of SPACE a lot of holes open up on the board because we didn't check for matches when we generated the board in the first place. Let's note that down and fix it later.
 
 
+Filling in the gaps
+-------------------
 
-  
+So now we have gaps we need to drop tiles into them. Finding the gaps shouldn't be too difficult as we just wrote the code to create them, but what about moving the tiles down?
+
+OK, let's add in a call to :code:`drop_tiles` inside :code:`check_tiles`...
+
+.. code:: python
+   def check_tiles():
+       for y in range(TILESH):
+           for x in range(TILESW-1):
+               if board[y][x] == board[y][x+1]:
+                   board[y][x] = None
+                   board[y][x+1] = None
+                   # Add these two lines
+                   drop_tiles(x,y)
+                   drop_tiles(x+1,y)
+
+Now we can add the new function:
+
+
+           
 To be continued...
 ------------------
 
