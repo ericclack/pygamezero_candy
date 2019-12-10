@@ -38,14 +38,14 @@ def drop_tiles(x,y):
     # Finally blank the tile at the top
     board[0][x] = None
 
-def check_tiles_for_matches():
+def check_matches():
     for y in range(TILESH):
         for x in range(TILESW-1):
             if board[y][x] == board[y][x+1]:
                 board[y][x] = None
                 board[y][x+1] = None
 
-def check_tiles_for_gaps():
+def check_gaps():
     # Work from the bottom up
     for y in range(TILESH-1,-1,-1):
         for x in range(TILESW):
@@ -66,7 +66,7 @@ def on_key_up(key):
         board[y][x], board[y][x+1] = board[y][x+1], board[y][x]
 
 def every_second():
-    check_tiles_for_matches()
-    check_tiles_for_gaps()
+    check_matches()
+    check_gaps()
 
 clock.schedule_interval(every_second, 1.0)

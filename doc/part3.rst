@@ -142,14 +142,14 @@ Let's check all the tiles on the board for matches, this will be simpler and if 
 
 .. code:: python
 
-   def check_tiles():
+   def check_matches():
        for y in range(TILESH): 
            for x in range(TILESW-1):
                if board[y][x] == board[y][x+1]:
                    board[y][x] = None
                    board[y][x+1] = None
 
-That code should look familiar, it's the same pattern as drawing the board. This time we are looping through every tile and checking to see if each is the same as it's neighbour. Did you see that we use a double equals sign to check that two things are the same :code:`==`, this is different to assignment with one equals sign.
+That loop code should look familiar, it's the same pattern as drawing the board. This time we are looping through every tile and checking to see if each is the same as its neighbour. Did you see that we use a double equals sign to check that two things are the same :code:`==`, this is different to assignment with one equals sign.
 
 If we spot a duplicate we remove the two tiles and replace them with a blank, a :code:`None` in python.
 
@@ -183,31 +183,62 @@ Run again and you'll notice no errors, but the tiles don't leave the screen. We 
        screen.clear()
        for y in range(TILESH):
 
-OK, that's better, but there is one more weird thing: on the first press of SPACE a lot of holes open up on the board because we didn't check for matches when we generated the board in the first place. Let's note that down and fix it later.
+OK, that's better, but there is one more weird thing: on the first press of SPACE a lot of holes open up on the board because we didn't check for matches when we generated the board in the first place.
+
+Periodic functions
+------------------
+
+We saw in the last section that no matches are found until we press SPACE, but actually there could be matches at the start of the game. Instead of running :code:`check_matches` when we press SPACE let's run it every second.
+
+Remove the call to this function from :code:`on_key_up` and add the following to the end of your code:
+
+.. code:: python
+
+   def every_second():
+       check_matches()
+
+   clock.schedule_interval(every_second, 1.0)
+
+*Now run and test your code. Better?*
 
 
 Filling in the gaps
 -------------------
 
-So now we have gaps we need to drop tiles into them. Finding the gaps shouldn't be too difficult as we just wrote the code to create them, but what about moving the tiles down?
-
-OK, let's add in a call to :code:`drop_tiles` inside :code:`check_tiles`...
+So now we have gaps we need to drop tiles into them. This function looks a bit similar to the function you just wrote: :code:`check_matches`.
 
 .. code:: python
-   def check_tiles():
-       for y in range(TILESH):
-           for x in range(TILESW-1):
-               if board[y][x] == board[y][x+1]:
-                   board[y][x] = None
-                   board[y][x+1] = None
-                   # Add these two lines
+          
+   def check_gaps():
+       # Work from the bottom up
+       for y in range(TILESH-1,-1,-1):
+           for x in range(TILESW):
+               if board[y][x] is None:
                    drop_tiles(x,y)
-                   drop_tiles(x+1,y)
 
-Now we can add the new function:
+And that function needs this one to actually drop the tiles:
 
+.. code:: python
 
-           
-To be continued...
-------------------
+   def drop_tiles(x,y):
+       # Loop backwards through the rows from x,y to the top
+       for row in range(y,0,-1):
+           # Copy the tile above down
+           board[row][x] = board[row-1][x]
+       # Finally blank the tile at the top
+       board[0][x] = None          
 
+When do we run this code? Let's add it to our :code:`every_second` function:
+
+.. code:: python
+
+   def every_second():
+       check_matches()
+       check_gaps()
+
+*That's it, we should have a working Candy Crush Clone!* 
+       
+What's next?
+------------
+
+Have a think about what you'd like to do next in the game. Talk to a mentor about your suggestions and we can add them to Part 4.
