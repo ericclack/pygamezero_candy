@@ -27,8 +27,8 @@ Now it's time to add the code to swap the two tiles under the cursor. We first n
 
 Here's what this code does:
 
-#. if they key pressed is space...
-#. get the co-ordinates of the tile that the cursor is over
+#. if the key pressed is SPACE...
+#. get the co-ordinates of the tile that the cursor is over and store in :code:`x` and :code:`y` variables
 #. swap the tiles at co-ordinates :code:`(x,y)` and :code:`(x+1,y)`
 
 Did you notice something wrong with that code? Press run to see. That's right, we've not written the code for :code:`cursor_tile_pos` yet. Let's add that now, above the :code:`draw` function, add this code...
@@ -42,9 +42,9 @@ This function translates the pixel position of the cursor into a tile co-ordinat
 
 *You might be wondering: why do we bother creating a new function when we could just put this code into our `on_key_up` function?*
 
-Well two reasons: firstly creating the function makes our intensions clear, when we read the code we know that we are working out the cursor tile position; secondly we might need to do this in other places and we can re-use this function whenever we need to.
+Well two reasons: firstly creating the function makes our intentions clear, when we read the code we know that we are working out the cursor tile position; secondly we might need to do this in other places and we can re-use this function whenever we need to.
 
-These are two really important things that professional programmers do: **make your intesions clear** and **don't repeat yourself (DRY)**. Another way of thinking about DRY is **be lazy**, avoid any boring, repetitive work! (If only all of life was like that!)
+These are two really important things that professional programmers do: **make your intetions clear** and **don't repeat yourself (DRY)**. Another way of thinking about DRY is **be lazy**, avoid any boring, repetitive work! (If only all of life was like that!)
 
 Time for testing
 ----------------
@@ -88,7 +88,7 @@ Here's my list of bugs -- how does it compare to yours?
 What about the causes?
 
 * 1 & 2 are caused by the array indexes (x and y) being out of range, in other words: less than zero, or greater than the size of the array
-* 3 & 4 are caused by us not writing the code yet.
+* 3 & 4 are caused because we're not written the code yet.
 
 What about fixes?
 
