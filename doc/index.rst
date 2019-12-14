@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Candy Crush's documentation!
-=======================================
+Pygame Zero : Candy Crush tutorial
+==================================
 
 In this tutorial we'll use Pygame Zero to create a Candy Crush clone.
 

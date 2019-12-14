@@ -86,7 +86,7 @@ Here's the code with the numbers replaced with constants or calculations using t
    for row in range(TILESH):
        # Make a list of 10 random tiles
        tiles = [random.randint(1,8) for _ in range(TILESW)]
-           board.append(tiles)
+       board.append(tiles)
 
    def draw():
        for y in range(TILESH):
