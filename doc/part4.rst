@@ -100,13 +100,27 @@ Let's add a score so that the player gets some sense of achievement from playing
 We'll need to add a variable to the start of the game, so add the
 following line near the top of your code:
 
-..code :: python
+.. code:: python
 
   score = 0
 
-Then inside any function that changes the score we need to add this line at the top of the function:
+Now we need to draw the score, where shall we place it on the screen?
+Shall we place it over the top of tiles or make space for it on a
+blank row with no tiles? You decide.
 
-..code :: python
+In order to display text you'll need to use the function
+:code:`screen.draw.text` like this:
+
+.. code:: python
+
+   screen.draw.text("Score: %s" % score, bottomleft=(0,HEIGHT), fontsize=60)
+
+Now on to changing the score...
+
+Inside any function that changes the score we need to add this line at
+the top of the function:
+
+.. code:: python
 
   global score
 
@@ -119,7 +133,10 @@ support both and give a higher score for matching squares? You are the
 game creator, so you decide!
 
 
+Time for some fruit
+-------------------
 
+TBC
 
 
        
@@ -177,4 +194,6 @@ What's next?
 
 Well done! You've made it to the end of the Candy Crush Tutorial! You
 are now thinking like a programmer and have many of the skills
-required to create your own games!
+required to create your own games.
+
+All you need to do now is come up with some ideas to try out...
