@@ -241,4 +241,7 @@ When do we run this code? Let's add it to our :code:`every_second` function:
 What's next?
 ------------
 
-Have a think about what you'd like to do next in the game. Talk to a mentor about your suggestions and we can add them to Part 4.
+Maybe we should add new tiles as we clear the screen?
+
+Read on to :ref:`part4`.
+

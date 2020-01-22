@@ -8,7 +8,7 @@ WIDTH = TILESW * 40
 HEIGHT = (TILESH+1) * 40
 
 # How likely is a new tile each tick?
-NEW_TILE_PROB = 0.1
+NEW_TILE_PROB = 0.9
 
 TITLE = 'Candy Crush'
 last_dt = 0
@@ -44,11 +44,15 @@ def drop_tiles(x,y):
     board[0][x] = None
 
 def check_matches():
-    for y in range(TILESH):
+    global score
+    for y in range(TILESH-1):
         for x in range(TILESW-1):
-            if board[y][x] == board[y][x+1]:
+            if board[y][x] == board[y][x+1] == board[y+1][x] == board[y+1][x+1]:
                 board[y][x] = None
                 board[y][x+1] = None
+                board[y+1][x] = None
+                board[y+1][x+1] = None
+                score += 50
 
 def check_gaps():
     # Work from the bottom up
@@ -58,6 +62,7 @@ def check_gaps():
                 drop_tiles(x,y)
 
 def on_key_up(key):
+    global score
     x, y = cursor_tile_pos()
     if key == keys.LEFT and x > 0:
         cursor.x -= 40
@@ -68,6 +73,7 @@ def on_key_up(key):
     if key == keys.DOWN and y < TILESH-1:
         cursor.y += 40
     if key == keys.SPACE:
+        score += -1
         board[y][x], board[y][x+1] = board[y][x+1], board[y][x]
 
 def add_new_tiles():
