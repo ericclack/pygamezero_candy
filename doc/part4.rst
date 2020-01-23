@@ -171,7 +171,7 @@ creator, so you decide!
 Time for some fruit
 -------------------
 
-Coming soon...
+*Coming soon...*
 
 
        
