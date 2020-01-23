@@ -1,5 +1,8 @@
 .. _part4:
 
+.. To do
+   Explain why we use `global`
+
 Part 4
 ======
 
@@ -35,7 +38,8 @@ Add this method and comments:
 
    def new_tiles():
        # Put the steps of your algorithm here.
-       # Go on, have a think first... before you scroll down and see a solution.
+       # Go on, have a think first... before you scroll down
+       # and see a solution.
        #
        # What are the steps we need to do to add new tiles?
 
@@ -113,12 +117,10 @@ In order to display text you'll need to use the function
 
 .. code:: python
 
-   screen.draw.text("Score: %s" % score, bottomleft=(0,HEIGHT), fontsize=60)
+   screen.draw.text("Score: %s" % score, bottomleft=(0, HEIGHT), fontsize=60)
 
-Now on to changing the score...
-
-Inside any function that changes the score we need to add this line at
-the top of the function:
+Now on to changing the score... Inside any function that changes the
+score we need to add this line at the top of the function:
 
 .. code:: python
 
@@ -128,15 +130,48 @@ Now you get to decide when and how to change the score. Clearly we
 should increase it when the user gets a match, but by how much? We
 could reduce it when they move, maybe?
 
-Also if you've followed the match 3 and match square code we could
-support both and give a higher score for matching squares? You are the
-game creator, so you decide!
+What's `global` do?
+...................
+
+You might not have seen :code:`global` before. It tells Python that
+when we use :code:`score` in this function we want to use the one
+defined outside the function (in global scope), not one private to
+this function's scope.
+
+By default in Python (and many other programming languages) if you
+create a variable in a function then it is assumed that this is
+private to that function. This is a good thing as it stops code in a
+function messing up code outside the function.
+
+Here's an example (create a new Python script if you want to see it in
+action):
+
+.. code:: python
+
+    def fac(i):
+        f = 1
+        for a in range(i, 0, -1):
+            f = f * a
+        return f
+
+    a = 5
+    print(fac(a))
+    a = a + 1
+    print(fac(a))
+
+    
+Other score ideas
+.................
+
+If you've followed the match 3 and match square code we could support
+both and give a higher score for matching squares? You are the game
+creator, so you decide!
 
 
 Time for some fruit
 -------------------
 
-TBC
+Coming soon...
 
 
        
