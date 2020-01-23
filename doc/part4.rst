@@ -16,8 +16,10 @@ In Part 4 of Candy Crush we will add these features:
 
 One thing: now that we are on part 4 and you have a bit of practice
 thinking like a developer we are going to ask you to start creating
-your own algorithms and Python code. Don't worry, we've supplied some
-solutions at the end.
+your own algorithms and Python code.
+
+Don't worry if you get stuck, we've supplied some solutions at the
+end.
 
 
 Adding new tiles
@@ -57,12 +59,13 @@ Here's one algorithm that might work:
        # Check for gaps starting at the top of the screen
        # Can we just check the first row?
        # Place a new tile into any gaps we find
-       # The existing code will make them fall down the screen.
+       # The existing code will make them fall down the screen?
 
-How did this compare with yours?
+How did this compare with your algorithm? Which one do you want to try?
 
 Now can you use what you've already practiced to turn your algorithm
-into Python code?
+into Python code? If you get stuck you can always scroll down to see
+some example code, but do try to do it yourself first.
 
 
 Make it a match 3 game
