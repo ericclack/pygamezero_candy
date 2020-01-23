@@ -149,6 +149,7 @@ action):
 .. code:: python
 
     def fac(i):
+        """Compute the factorial of i, e.g. fac(5) is 5*4*3*2*1."""
         f = 1
         for a in range(i, 0, -1):
             f = f * a
@@ -159,13 +160,25 @@ action):
     a = a + 1
     print(fac(a))
 
+If Python didn't use a private scope in the function :code:`fac` above
+then our choice of the variable named :code:`a` for the loop would
+overwrite the variable :code:`a` outside of the function, creating
+some really odd bugs.
+
+Put another way: the variable :code:`a` in the function :code:`fac` is
+completely different to the variable :code:`a` outside the function,
+even though they have the same name.
     
 Other score ideas
 .................
 
-If you've followed the match 3 and match square code we could support
-both and give a higher score for matching squares? You are the game
-creator, so you decide!
+If you've followed the match 3 and match square code above we could support
+both and give a higher score for matching squares
+
+We could add a time limit and count the score down from 100, ending
+the game at zero.
+
+You are the game creator, so you decide!
 
 
 Time for some fruit
