@@ -34,3 +34,10 @@ Click on the Part 1 link below to get started.
    part2
    part3
    part4
+
+Get in touch
+------------
+
+We would love to hear how you've got on with this tutorial or receive
+any other feedback. Get in touch with the author: |author|
+ 
