@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Candy Crush'
+project = 'Candy Crush Tutorial'
 copyright = '2019, Eric Clack'
 author = 'Eric Clack <eric@bn7.net>'
 
@@ -60,3 +60,15 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+html_theme_options = {
+    'show_powered_by': False,
+    'github_user': 'ericclack',
+    'github_repo': 'pygamezero_candy',
+    'github_banner': True,
+    'show_related': False,
+    #'note_bg': '#FFF59C'
+}
