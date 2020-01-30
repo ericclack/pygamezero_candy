@@ -1,10 +1,10 @@
 .. _part4:
 
-.. To do
-   Explain why we use `global`
-
 Part 4
 ======
+
+.. To do
+   Explain why we use `global`
 
 In Part 4 of Candy Crush we will add these features:
 
