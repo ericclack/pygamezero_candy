@@ -9,9 +9,8 @@ Part 4
 In Part 4 of Candy Crush we will add these features:
 
 * add new tiles to fill the gaps
-* make it a match 3 game, or match squares
+* make it a match 3 game, or match square game
 * add a score
-* add fruits that you need to get to the bottom of the screen for bonus points
 * add bombs that help you clear the screen.
 
 One thing: now that we are on part 4 and you have a bit of practice
@@ -175,8 +174,8 @@ even though they have the same name.
 Other score ideas
 .................
 
-If you've followed the match 3 and match square code above we could support
-both and give a higher score for matching squares
+If you've followed the match 3 and match square code above we could
+support both and give a higher score for matching squares
 
 We could add a time limit and count the score down from 100, ending
 the game at zero.
@@ -184,11 +183,94 @@ the game at zero.
 You are the game creator, so you decide!
 
 
-Time for some fruit
--------------------
+Bombs away
+----------
 
-*Coming soon...*
+As we did for matching 3 tiles, let's first have a think about how we
+want bombs to work. The general idea is that matching 3 bombs (or a
+square) will clear more than just the tiles that the bombs occupy, but
+how many extra tiles? What shape?
 
+As well as deciding on the effect of matching bombs we also need to
+make bombs appear in the game and spot when they are matched. Oh and we
+need to draw a bomb tile too.
+
+So to start with draw yourself a bomb tile. You could find one on the
+internet or make your own using a free graphics program such as
+`GIMP`_. The tile needs to be 32x32 pixels so that it is the same size
+as the others.
+
+Placing the bombs
+.................
+
+Now let's look at how we can place the bombs on the board.
+
+The simplest way is to name the tile :code:`9.png` and then change the
+random range in the first :code:`for` loop (the one that fills up the
+:code:`board` array) to include 1-9, then bombs will appear. Try
+this. I think you'll agree there are way too many bombs!
+
+This is because the code :code:`random.randint(1,9)` returns a random
+number in the range 1 to 9 with no preference, all are equally
+likely. We can make 9 (the bomb) less likely...
+
+First let's split out the random tile code into a new function. Add
+this function above the :code:`for` loop:
+
+.. code:: python
+
+   def random_tile():
+       return random.randint(1,9)
+
+And change the code inside the loop to read:
+
+.. code:: python
+
+   tiles = [random_tile() for _ in range(TILESW)]
+
+
+Now we can play with :code:`random_tile` to get the effect we
+want. Let's try another random function :code:`random.choice()`, this
+takes a list and gives us a random element. If we fill the list with
+more of our regular tiles and just one bomb tile then we should get
+less tiles.
+
+Change the function to the following:
+
+.. code:: python
+
+   def random_tile():
+       tiles = [1,2,3,4,5,6,7,8,9]
+       return random.choice( tiles + tiles + [9] )
+
+Here we use double the number of regular tiles and one bomb. Try it to
+see the effect. You could add more :code:`+ tiles` if you want to have
+less bombs.
+
+Matching bombs
+..............
+
+If you don't change any other code you'll be able to match 3 bombs and
+they'll be removed as with any other tile. However we want bombs to do
+more damage than that.
+
+So take a look at the function :code:`check_matches()` and see if you
+can figure out how to (a) spot bomb matches and (b) remove more than
+just the bombs.
+
+Try to think through how you'll achieve this... remember you can
+always scroll down to see a solution, but do try first yourself.
+
+
+
+What's next?
+------------
+
+Well done! You've made it to the end of the Candy Crush Tutorial! You
+are now thinking like a programmer and have many of the skills
+required to create your own games.
+
+All you need to do now is come up with some ideas to try out...
 
        
 ----
@@ -237,14 +319,27 @@ Code for match squares
                     board[y][x] = None
                     board[y][x+1] = None
                     board[y+1][x] = None
-                    board[y+1][x+1] = None          
+                    board[y+1][x+1] = None
 
+Code for matching bombs
+.......................
+
+.. code:: python
+          
+    def check_matches():
+        global score
+        for y in range(TILESH):
+            for x in range(TILESW-2):
+                if board[y][x] == board[y][x+1] == board[y][x+2]:
+                    if board[y][x] == 9:
+                        # A bomb, so blank out whole row
+                        for x2 in range(TILESW):
+                            board[y][x2] = None
+                    else:
+                        board[y][x] = None
+                        board[y][x+1] = None
+                        board[y][x+2] = None
+
+                    score += 50
                     
-What's next?
-------------
-
-Well done! You've made it to the end of the Candy Crush Tutorial! You
-are now thinking like a programmer and have many of the skills
-required to create your own games.
-
-All you need to do now is come up with some ideas to try out...
+.. _GIMP: https://www.gimp.org/

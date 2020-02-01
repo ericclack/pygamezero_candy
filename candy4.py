@@ -16,10 +16,14 @@ last_dt = 0
 cursor = Actor('selected', topleft=(0,0))
 score = 0
 
+def random_tile():
+    tiles = [1,2,3,4,5,6,7,8]
+    return random.choice(tiles + tiles + [9])
+
 board = []
 for row in range(TILESH):
     # Make a list of 10 random tiles
-    tiles = [random.randint(1,8) for _ in range(TILESW)]
+    tiles = [random_tile() for _ in range(TILESW)]
     board.append(tiles)
 
 def draw():
@@ -45,13 +49,17 @@ def drop_tiles(x,y):
 
 def check_matches():
     global score
-    for y in range(TILESH-1):
-        for x in range(TILESW-1):
-            if board[y][x] == board[y][x+1] == board[y+1][x] == board[y+1][x+1]:
-                board[y][x] = None
-                board[y][x+1] = None
-                board[y+1][x] = None
-                board[y+1][x+1] = None
+    for y in range(TILESH):
+        for x in range(TILESW-2):
+            if board[y][x] == board[y][x+1] == board[y][x+2]:
+                if board[y][x] == 9:
+                    for x2 in range(TILESW):
+                        board[y][x2] = None
+                else:
+                    board[y][x] = None
+                    board[y][x+1] = None
+                    board[y][x+2] = None
+
                 score += 50
 
 def check_gaps():
