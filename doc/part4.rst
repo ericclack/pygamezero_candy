@@ -300,7 +300,7 @@ Here is the new :code:`check_matches` function with changes to make it a match 3
 
     def check_matches():
         for y in range(TILESH):
-            for x in range(TILESW-1):
+            for x in range(TILESW-2):
                 if board[y][x] == board[y][x+1] == board[y][x+2]:
                     board[y][x] = None
                     board[y][x+1] = None
