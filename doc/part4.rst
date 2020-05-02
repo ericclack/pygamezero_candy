@@ -240,7 +240,7 @@ Change the function to the following:
 .. code:: python
 
    def random_tile():
-       tiles = [1,2,3,4,5,6,7,8,9]
+       tiles = [1,2,3,4,5,6,7,8]
        return random.choice( tiles + tiles + [9] )
 
 Here we use double the number of regular tiles and one bomb. Try it to
