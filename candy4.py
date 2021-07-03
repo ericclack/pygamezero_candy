@@ -51,7 +51,7 @@ def check_matches():
     global score
     for y in range(TILESH):
         for x in range(TILESW-2):
-            if board[y][x] == board[y][x+1] == board[y][x+2]:
+            if board[y][x] is not None and board[y][x] == board[y][x+1] == board[y][x+2]:
                 if board[y][x] == 9:
                     for x2 in range(TILESW):
                         board[y][x2] = None
@@ -92,6 +92,6 @@ def add_new_tiles():
 def every_second():
     check_matches()
     check_gaps()
-    add_new_tiles()
+    #add_new_tiles()
 
 clock.schedule_interval(every_second, 0.25)
