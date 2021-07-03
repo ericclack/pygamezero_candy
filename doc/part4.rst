@@ -330,7 +330,7 @@ Code for matching bombs
         global score
         for y in range(TILESH):
             for x in range(TILESW-2):
-                if board[y][x] == board[y][x+1] == board[y][x+2]:
+                if board[y][x] is not None and board[y][x] == board[y][x+1] == board[y][x+2]:
                     if board[y][x] == 9:
                         # A bomb, so blank out whole row
                         for x2 in range(TILESW):
